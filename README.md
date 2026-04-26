@@ -5,6 +5,12 @@ To manage Deye use device like this? or another
 Waveshare Industrial Grade Serial Server RS232/485 to WiFi / Ethernet RJ45 Network Port with POE Support
 <img width="322" height="287" alt="{52D22CEF-57AA-4564-A393-C34AFDBC2EE0}" src="https://github.com/user-attachments/assets/6a955d3e-8de5-42bb-841a-39ace51cdaa1" />
 
+<img width="501" height="907" alt="{53A1EC40-494C-491A-BC2A-23158FD6A959}" src="https://github.com/user-attachments/assets/ea45061f-b411-4477-9049-a6967ec13440" />
+
+<img width="585" height="903" alt="{8E8981B7-1B19-46C4-9B17-B9D5C07763FE}" src="https://github.com/user-attachments/assets/fe3bf2b3-15db-4361-b8db-95e1cf3cedd3" />
+
+
+
 Settings example
 <img width="853" height="406" alt="{41E358DD-5027-4880-9969-BC3F30C321A6}" src="https://github.com/user-attachments/assets/ee55a462-6479-4ea3-8717-93c0fcdf09f0" />
 
@@ -18,6 +24,7 @@ Settings example
 
 <img width="842" height="396" alt="{24A4CC1B-A31D-4E90-AAF1-7C1290D40BC9}" src="https://github.com/user-attachments/assets/8ae68c1a-8746-4dbb-895d-06cef831f3aa" />
 
-  Run Python script deye_modbus.py on Your smart home server.
 
-  Good luck!
+Run Python script deye_modbus.py on Your smart home server.
+
+Good luck!
