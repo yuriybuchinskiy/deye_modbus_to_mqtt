@@ -1,7 +1,8 @@
 # deye_modbus_to_mqtt
 Deye modbus to mqtt python client
 
-To manage Deye use device like this? or another
+To manage Deye use device like this, or another.
+In my case:
 Waveshare Industrial Grade Serial Server RS232/485 to WiFi / Ethernet RJ45 Network Port with POE Support
 <img width="322" height="287" alt="{52D22CEF-57AA-4564-A393-C34AFDBC2EE0}" src="https://github.com/user-attachments/assets/6a955d3e-8de5-42bb-841a-39ace51cdaa1" />
 
