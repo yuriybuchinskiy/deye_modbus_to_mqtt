@@ -306,15 +306,15 @@ def make_request():
 
 
 # Modbus server configuration
-HOST = '192.168.0.109'  # The server's IP address
+HOST = '192.168.0.XX'  # The server's IP address
 PORT = 8899        # The port used by the server
 req_count = 0
 
 mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 mqttc.on_connect = on_connect
-mqttc.username_pw_set(username="yuriy_buchinskiy",password="Fahjlbpbfr1")
+mqttc.username_pw_set(username="login",password="password")
 print("Connecting...")
-mqttc.connect("192.168.0.10", 1883, 10)
+mqttc.connect("192.168.0.XX", 1883, 10) # the mqtt server IP address
 
 # Запускать запрос каждые 2 секунды
 while True:
