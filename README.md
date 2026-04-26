@@ -30,3 +30,7 @@ Settings example
 Run Python script deye_modbus.py on Your smart home server.
 
 Good luck!
+
+
+Donation
+<img width="539" height="542" alt="{F9851376-9F0C-4184-9D8C-4352C228A117}" src="https://github.com/user-attachments/assets/c2bca69f-938e-4b00-b88e-8fcf4398a308" />
