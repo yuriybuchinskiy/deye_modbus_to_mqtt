@@ -33,4 +33,5 @@ Good luck!
 
 
 Donation
-<img width="539" height="542" alt="{F9851376-9F0C-4184-9D8C-4352C228A117}" src="https://github.com/user-attachments/assets/c2bca69f-938e-4b00-b88e-8fcf4398a308" />
+<img width="522" height="524" alt="{BBC6F862-8ADE-40C7-9377-BFC969027FDA}" src="https://github.com/user-attachments/assets/50085ff4-701e-47cc-b1fb-5f9b7aca8558" />
+
