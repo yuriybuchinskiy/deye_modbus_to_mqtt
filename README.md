@@ -12,7 +12,8 @@ Waveshare Industrial Grade Serial Server RS232/485 to WiFi / Ethernet RJ45 Netwo
 <br><br><br>
 
 
-Settings example<br>
+Settings example
+<br><br><br>
 <img width="853" height="406" alt="{41E358DD-5027-4880-9969-BC3F30C321A6}" src="https://github.com/user-attachments/assets/ee55a462-6479-4ea3-8717-93c0fcdf09f0" />
 
 <img width="798" height="671" alt="{26DC241B-C0D9-4601-AAAD-FD030BBB803B}" src="https://github.com/user-attachments/assets/510041a4-ffd0-4416-b61d-3ffbfae57433" />
