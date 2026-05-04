@@ -180,90 +180,98 @@ def make_request():
         i = i + 2
     print(tempstr)'''
 
+    #print(data)
+    data_crc = data[0:(modbus_num_registers*2)+3]
+    bytes_crc = data[(modbus_num_registers*2)+3:(modbus_num_registers*2)+5]
+    #print(data_crc)
+    #print(bytes_crc)
+    crc = crc16(data_crc)
+    #print(crc)
+    if bytes_crc == crc:
 
-    global S_ACinU 
-    n = (150-modbus_start_address)*2
-    ACinU = int.from_bytes(data[n+3:n+5], byteorder='big')
-    S_ACinU = str(round(ACinU*0.1, 1))
-    print('ACinU '+S_ACinU)
-    global S_ACGenU 
-    n = (151-modbus_start_address)*2
-    ACGenU = int.from_bytes(data[n+3:n+5], byteorder='big')
-    S_ACGenU = str(round(ACGenU*0.1, 1))
-    print('ACGenU '+S_ACGenU)
-    global S_ACoutU
-    n = (157-modbus_start_address)*2
-    ACoutU = int.from_bytes(data[n+3:n+5], byteorder='big')
-    S_ACoutU = str(round(ACoutU*0.1, 1))
-    print('ACoutU '+S_ACoutU)
-    global S_ACinP
-    n = (167-modbus_start_address)*2
-    ACinP = int.from_bytes(data[n+3:n+5], byteorder='big')
-    S_ACinP = str(round(ACinP*1, 1))
-    print('ACinP '+S_ACinP)
-    global S_ACGenP
-    n = (168-modbus_start_address)*2
-    ACGenP = int.from_bytes(data[n+3:n+5], byteorder='big')
-    S_ACGenP = str(round(ACGenP*1, 1))
-    print('ACGenP '+S_ACGenP)
-    global S_ACoutP
-    n = (178-modbus_start_address)*2
-    ACoutP = int.from_bytes(data[n+3:n+5], byteorder='big')
-    S_ACoutP = str(round(ACoutP*1, 1))
-    print('ACoutP '+S_ACoutP)
-    global S_GreenPower
-    GreenPower = ACoutP - ACinP
-    S_GreenPower = str(round(GreenPower*1, 1))
-    print('GreenPower '+S_GreenPower)
-    global S_BatT
-    n = (182-modbus_start_address)*2
-    BatT = int.from_bytes(data[n+3:n+5], byteorder='big') - 1000
-    S_BatT = str(round(BatT*0.1, 1))
-    print('BatT '+S_BatT)
-    global S_BatU
-    n = (183-modbus_start_address)*2
-    BatU = int.from_bytes(data[n+3:n+5], byteorder='big')
-    S_BatU = str(round(BatU*0.01, 1))
-    print('BatU '+S_BatU)
-    global S_BatSOC
-    n = (184-modbus_start_address)*2
-    BatSOC = int.from_bytes(data[n+3:n+5], byteorder='big')
-    S_BatSOC = str(round(BatSOC*1, 1))
-    print('BatSOC '+S_BatSOC)
-    global S_PV1P
-    n = (186-modbus_start_address)*2
-    PV1P = int.from_bytes(data[n+3:n+5], byteorder='big')
-    S_PV1P = str(round(PV1P*1, 1))
-    print('PV1P '+S_PV1P)
-    global S_PV2P
-    n = (187-modbus_start_address)*2
-    PV2P = int.from_bytes(data[n+3:n+5], byteorder='big')
-    S_PV2P = str(round(PV2P*1, 1))
-    print('PV2P '+S_PV2P)
-    global S_PVAllP
-    PVAllP = PV1P + PV2P
-    S_PVAllP = str(round(PVAllP*1, 1))
-    print('PVAllP '+S_PVAllP)
-    global S_BatP
-    n = (190-modbus_start_address)*2
-    BatP = to_signed(int.from_bytes(data[n+3:n+5], byteorder='big'),16)*(-1)
-    S_BatP = str(round(BatP*1, 1))
-    print('BatP '+S_BatP)
-    global S_BatI
-    n = (191-modbus_start_address)*2
-    BatI = to_signed(int.from_bytes(data[n+3:n+5], byteorder='big'),16)*(-1)
-    S_BatI = str(round(BatI*0.01, 1))
-    print('BatI '+S_BatI)
-    global S_ACoutF
-    n = (192-modbus_start_address)*2
-    ACoutF = int.from_bytes(data[n+3:n+5], byteorder='big')
-    S_ACoutF = str(round(ACoutF*0.01, 1))
-    print('ACoutF '+S_ACoutF)
-    global S_ACinF
-    n = (193-modbus_start_address)*2
-    ACinF = int.from_bytes(data[n+3:n+5], byteorder='big')
-    S_ACinF = str(round(ACinF*0.01, 1))
-    print('ACinF '+S_ACinF)
+        global S_ACinU 
+        n = (150-modbus_start_address)*2
+        ACinU = int.from_bytes(data[n+3:n+5], byteorder='big')
+        S_ACinU = str(round(ACinU*0.1, 1))
+        print('ACinU '+S_ACinU)
+        global S_ACGenU 
+        n = (151-modbus_start_address)*2
+        ACGenU = int.from_bytes(data[n+3:n+5], byteorder='big')
+        S_ACGenU = str(round(ACGenU*0.1, 1))
+        print('ACGenU '+S_ACGenU)
+        global S_ACoutU
+        n = (157-modbus_start_address)*2
+        ACoutU = int.from_bytes(data[n+3:n+5], byteorder='big')
+        S_ACoutU = str(round(ACoutU*0.1, 1))
+        print('ACoutU '+S_ACoutU)
+        global S_ACinP
+        n = (167-modbus_start_address)*2
+        ACinP = int.from_bytes(data[n+3:n+5], byteorder='big')
+        S_ACinP = str(round(ACinP*1, 1))
+        print('ACinP '+S_ACinP)
+        global S_ACGenP
+        n = (168-modbus_start_address)*2
+        ACGenP = int.from_bytes(data[n+3:n+5], byteorder='big')
+        S_ACGenP = str(round(ACGenP*1, 1))
+        print('ACGenP '+S_ACGenP)
+        global S_ACoutP
+        n = (178-modbus_start_address)*2
+        ACoutP = int.from_bytes(data[n+3:n+5], byteorder='big')
+        S_ACoutP = str(round(ACoutP*1, 1))
+        print('ACoutP '+S_ACoutP)
+        global S_GreenPower
+        GreenPower = ACoutP - ACinP
+        S_GreenPower = str(round(GreenPower*1, 1))
+        print('GreenPower '+S_GreenPower)
+        global S_BatT
+        n = (182-modbus_start_address)*2
+        BatT = int.from_bytes(data[n+3:n+5], byteorder='big') - 1000
+        S_BatT = str(round(BatT*0.1, 1))
+        print('BatT '+S_BatT)
+        global S_BatU
+        n = (183-modbus_start_address)*2
+        BatU = int.from_bytes(data[n+3:n+5], byteorder='big')
+        S_BatU = str(round(BatU*0.01, 1))
+        print('BatU '+S_BatU)
+        global S_BatSOC
+        n = (184-modbus_start_address)*2
+        BatSOC = int.from_bytes(data[n+3:n+5], byteorder='big')
+        S_BatSOC = str(round(BatSOC*1, 1))
+        print('BatSOC '+S_BatSOC)
+        global S_PV1P
+        n = (186-modbus_start_address)*2
+        PV1P = int.from_bytes(data[n+3:n+5], byteorder='big')
+        S_PV1P = str(round(PV1P*1, 1))
+        print('PV1P '+S_PV1P)
+        global S_PV2P
+        n = (187-modbus_start_address)*2
+        PV2P = int.from_bytes(data[n+3:n+5], byteorder='big')
+        S_PV2P = str(round(PV2P*1, 1))
+        print('PV2P '+S_PV2P)
+        global S_PVAllP
+        PVAllP = PV1P + PV2P
+        S_PVAllP = str(round(PVAllP*1, 1))
+        print('PVAllP '+S_PVAllP)
+        global S_BatP
+        n = (190-modbus_start_address)*2
+        BatP = to_signed(int.from_bytes(data[n+3:n+5], byteorder='big'),16)*(-1)
+        S_BatP = str(round(BatP*1, 1))
+        print('BatP '+S_BatP)
+        global S_BatI
+        n = (191-modbus_start_address)*2
+        BatI = to_signed(int.from_bytes(data[n+3:n+5], byteorder='big'),16)*(-1)
+        S_BatI = str(round(BatI*0.01, 1))
+        print('BatI '+S_BatI)
+        global S_ACoutF
+        n = (192-modbus_start_address)*2
+        ACoutF = int.from_bytes(data[n+3:n+5], byteorder='big')
+        S_ACoutF = str(round(ACoutF*0.01, 1))
+        print('ACoutF '+S_ACoutF)
+        global S_ACinF
+        n = (193-modbus_start_address)*2
+        ACinF = int.from_bytes(data[n+3:n+5], byteorder='big')
+        S_ACinF = str(round(ACinF*0.01, 1))
+        print('ACinF '+S_ACinF)
 
     modbus_start_address = 109
     mbsa = modbus_start_address.to_bytes(2, byteorder='big')
@@ -281,66 +289,76 @@ def make_request():
         data = client_socket.recv(1024)
         client_socket.close()
     
-    global S_PV1U 
-    n = (109-modbus_start_address)*2
-    PV1U = int.from_bytes(data[n+3:n+5], byteorder='big')
-    S_PV1U = str(round(PV1U*0.1, 1))
-    print('PV1U '+S_PV1U)
-    global S_PV1I 
-    n = (110-modbus_start_address)*2
-    PV1I = int.from_bytes(data[n+3:n+5], byteorder='big')
-    S_PV1I = str(round(PV1I*0.1, 1))
-    print('PV1I '+S_PV1I)
-    global S_PV2U
-    n = (111-modbus_start_address)*2
-    PV2U = int.from_bytes(data[n+3:n+5], byteorder='big')
-    S_PV2U = str(round(PV2U*0.1, 1))
-    print('PV2U '+S_PV2U)
-    global S_PV2I
-    n = (112-modbus_start_address)*2
-    PV2I = int.from_bytes(data[n+3:n+5], byteorder='big')
-    S_PV2I = str(round(PV2I*1, 1))
-    print('PV2I '+S_PV2I)
-   
+    data_crc = data[0:(modbus_num_registers*2)+3]
+    bytes_crc = data[(modbus_num_registers*2)+3:(modbus_num_registers*2)+5]
+    crc = crc16(data_crc)
+    if bytes_crc == crc:
+
+        global S_PV1U 
+        n = (109-modbus_start_address)*2
+        PV1U = int.from_bytes(data[n+3:n+5], byteorder='big')
+        S_PV1U = str(round(PV1U*0.1, 1))
+        print('PV1U '+S_PV1U)
+        global S_PV1I 
+        n = (110-modbus_start_address)*2
+        PV1I = int.from_bytes(data[n+3:n+5], byteorder='big')
+        S_PV1I = str(round(PV1I*0.1, 1))
+        print('PV1I '+S_PV1I)
+        global S_PV2U
+        n = (111-modbus_start_address)*2
+        PV2U = int.from_bytes(data[n+3:n+5], byteorder='big')
+        S_PV2U = str(round(PV2U*0.1, 1))
+        print('PV2U '+S_PV2U)
+        global S_PV2I
+        n = (112-modbus_start_address)*2
+        PV2I = int.from_bytes(data[n+3:n+5], byteorder='big')
+        S_PV2I = str(round(PV2I*1, 1))
+        print('PV2I '+S_PV2I)
+    
 
 
 
 # Modbus server configuration
-HOST = '192.168.0.XX'  # The server's IP address
+HOST = '192.168.0.109'  # The server's IP address
 PORT = 8899        # The port used by the server
 req_count = 0
 
 mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 mqttc.on_connect = on_connect
-mqttc.username_pw_set(username="login",password="password")
+mqttc.username_pw_set(username="yuriy_buchinskiy",password="Fahjlbpbfr1")
 print("Connecting...")
-mqttc.connect("192.168.0.XX", 1883, 10) # the mqtt server IP address
+mqttc.connect("192.168.0.10", 1883, 10)
 
 # Запускать запрос каждые 2 секунды
 while True:
     req_count = req_count + 1
     print(f"req_count: {req_count}")
-    make_request()
-    time.sleep(2) # Задержка в секундах
+    try:
+        make_request()
+        time.sleep(3) # Задержка в секундах
 
-    mqttc.publish("deye_6kw/ACinU", S_ACinU)
-    mqttc.publish("deye_6kw/ACGenU", S_ACGenU)
-    mqttc.publish("deye_6kw/ACoutU", S_ACoutU)
-    mqttc.publish("deye_6kw/ACinP", S_ACinP)
-    mqttc.publish("deye_6kw/ACGenP", S_ACGenP)
-    mqttc.publish("deye_6kw/ACoutP", S_ACoutP)
-    mqttc.publish("deye_6kw/BatT", S_BatT)
-    mqttc.publish("deye_6kw/BatU", S_BatU)
-    mqttc.publish("deye_6kw/BatSOC", S_BatSOC)
-    mqttc.publish("deye_6kw/PV1P", S_PV1P)
-    mqttc.publish("deye_6kw/PV1U", S_PV1U)
-    mqttc.publish("deye_6kw/PV1I", S_PV1I)
-    mqttc.publish("deye_6kw/PV2P", S_PV2P)
-    mqttc.publish("deye_6kw/PV2U", S_PV2U)
-    mqttc.publish("deye_6kw/PV2I", S_PV2I)
-    mqttc.publish("deye_6kw/BatP", S_BatP)
-    mqttc.publish("deye_6kw/BatI", S_BatI)
-    mqttc.publish("deye_6kw/ACoutF", S_ACoutF)
-    mqttc.publish("deye_6kw/ACinF", S_ACinF)
-    mqttc.publish("deye_6kw/GreenPower", S_GreenPower)
-    mqttc.publish("deye_6kw/PVAllP", S_PVAllP)
+        mqttc.publish("deye_6kw/ACinU", S_ACinU)
+        mqttc.publish("deye_6kw/ACGenU", S_ACGenU)
+        mqttc.publish("deye_6kw/ACoutU", S_ACoutU)
+        mqttc.publish("deye_6kw/ACinP", S_ACinP)
+        mqttc.publish("deye_6kw/ACGenP", S_ACGenP)
+        mqttc.publish("deye_6kw/ACoutP", S_ACoutP)
+        mqttc.publish("deye_6kw/BatT", S_BatT)
+        mqttc.publish("deye_6kw/BatU", S_BatU)
+        mqttc.publish("deye_6kw/BatSOC", S_BatSOC)
+        mqttc.publish("deye_6kw/PV1P", S_PV1P)
+        mqttc.publish("deye_6kw/PV1U", S_PV1U)
+        mqttc.publish("deye_6kw/PV1I", S_PV1I)
+        mqttc.publish("deye_6kw/PV2P", S_PV2P)
+        mqttc.publish("deye_6kw/PV2U", S_PV2U)
+        mqttc.publish("deye_6kw/PV2I", S_PV2I)
+        mqttc.publish("deye_6kw/BatP", S_BatP)
+        mqttc.publish("deye_6kw/BatI", S_BatI)
+        mqttc.publish("deye_6kw/ACoutF", S_ACoutF)
+        mqttc.publish("deye_6kw/ACinF", S_ACinF)
+        mqttc.publish("deye_6kw/GreenPower", S_GreenPower)
+        mqttc.publish("deye_6kw/PVAllP", S_PVAllP)        
+
+    except:
+        time.sleep(3) # Задержка в секундах
+        print('connection error')
